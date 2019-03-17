@@ -3,16 +3,13 @@
 
 
 function sortedArrayToBST(nums) {
-    if(!nums.length) return nums;
-    return buildTree(nums, 0, nums.length - 1);
-};
+  if (!nums.length) return null;
 
-function buildTree(arr, s, e){
-    if(s <= e){
-        const mid = Math.floor((e+s) / 2);
-        const root = new TreeNode(arr[mid]);
-        root.left = buildTree(arr, s, mid-1);
-        root.right = buildTree(arr, mid+1, e);
-        return root;
-    }
-}
+  const mid = Math.floor(nums.length / 2);
+  const root = new TreeNode(nums[mid]);
+
+  root.left = sortedArrayToBST(nums.slice(0, mid));
+  root.right = sortedArrayToBST(nums.slice(mid + 1));
+
+  return root;
+};
