@@ -112,6 +112,8 @@ class Stack {
         } else {
             if(temp === this.minimum){
                 this.minimum = this.findMin(temp.next);
+            } else if(temp === this.maximum){
+                this.maximum = this.findMax(temp.next);
             }
         }
         this.top = this.top.next;
