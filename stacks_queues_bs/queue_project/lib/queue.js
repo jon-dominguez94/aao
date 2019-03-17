@@ -47,7 +47,17 @@ class Queue {
   }
 
   dequeue(){
-
+    if(!this.front){
+      return null;
+    } else {
+      const front = this.front;
+      if(!this.front.next){
+        this.back = null;
+      }
+      this.front = this.front.next;
+      this.length--;
+      return front.value;
+    }
   }
 
   size(){
