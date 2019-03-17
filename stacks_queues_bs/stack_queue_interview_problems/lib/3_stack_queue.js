@@ -106,6 +106,14 @@ class StackQueue {
             if(!this.outStack.size()){
                 this.transfer();
             }
+            if(this.size() === 1){
+                this.front = null;
+                this.back = null;
+                return this.outStack.pop();
+            }
+            const temp = this.outStack.pop();
+            this.back = this.outStack.top;
+            return temp;
         }
     }
 
