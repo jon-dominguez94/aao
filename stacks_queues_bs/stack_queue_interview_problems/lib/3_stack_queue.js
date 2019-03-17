@@ -112,7 +112,7 @@ class StackQueue {
                 return this.outStack.pop();
             }
             const temp = this.outStack.pop();
-            this.back = this.outStack.top;
+            this.front = this.outStack.top;
             return temp;
         }
     }
