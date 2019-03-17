@@ -94,6 +94,9 @@ class Stack {
         if(!this.maximum || val > this.maximum.value){
             this.maximum = newNode;
         }
+        if(!this.minimum || val < this.minimum.value){
+            this.minimum = newNode;
+        }
         return ++this.length;
     }
 
@@ -104,10 +107,38 @@ class Stack {
         const temp = this.top;
         if (this.top === this.bottom) {
             this.bottom = null;
+            this.maximum = null;
+            this.minimum = null;
+        } else {
+            if(temp === this.minimum){
+                this.minimum = this.findMin(temp.next);
+            }
         }
         this.top = this.top.next;
         this.length--;
         return temp;
+    }
+
+    findMin(head){
+        let min = head;
+        while(head){
+            if(head.value < min.value){
+                min = head;
+            }
+            head = head.next;
+        }
+        return min;
+    }
+
+    findMax(head){
+        let max = head;
+        while (head) {
+            if (head.value > max.value) {
+                max = head;
+            }
+            head = head.next;
+        }
+        return max;
     }
 
     size() {
