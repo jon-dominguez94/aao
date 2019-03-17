@@ -45,8 +45,18 @@ class BST {
      }
    }
 
-   searchIter(val){
-
+   searchIter(val){ 
+    if(!this.root) return false;
+    
+    const queue = [];
+    queue.push(this.root);
+    while(queue.length){
+        const temp = queue.pop();
+        if(temp.val === val) return true;
+        if(temp.left) queue.push(temp.left);
+        if(temp.right) queue.push(temp.right);
+    }
+    return false;
    }
 }
 
