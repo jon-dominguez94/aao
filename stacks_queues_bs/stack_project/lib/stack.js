@@ -46,7 +46,17 @@ class Stack {
   }
 
   pop(){
-
+    if(!this.top){
+      return null;
+    } else {
+      const top = this.top;
+      if(!this.top.next){
+        this.bottom = null;
+      }
+      this.top = this.top.next;
+      this.length--;
+      return top.value;
+    }
   }
 
   size(){
