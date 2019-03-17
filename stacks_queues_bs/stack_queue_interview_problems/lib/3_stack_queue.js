@@ -81,6 +81,8 @@ class StackQueue {
         this.outStack = new Stack();
         this.front = null;
         this.back = null;
+
+        this.transfer = this.transfer.bind(this);
     }
 
     enqueue(val){
@@ -98,9 +100,20 @@ class StackQueue {
     }
 
     dequeue(){
-
+        if(this.size() === 0){
+            return null;
+        } else {
+            if(!this.outStack.size()){
+                this.transfer();
+            }
+        }
     }
 
+    transfer(){
+        while(this.inStack.size()){
+            this.outStack.push(this.inStack.pop());
+        }
+    }
     size(){
         return this.inStack.size() + this.outStack.size();
     }
