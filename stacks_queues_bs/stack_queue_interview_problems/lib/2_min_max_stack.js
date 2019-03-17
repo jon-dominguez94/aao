@@ -77,6 +77,8 @@ class Stack {
         this.top = null;
         this.bottom = null;
         this.length = 0;
+        this.minimum = null;
+        this.maximum = null;
     }
 
     push(val) {
@@ -88,6 +90,9 @@ class Stack {
             const temp = this.top;
             this.top = newNode;
             this.top.next = temp;
+        }
+        if(!this.maximum || val > this.maximum.value){
+            this.maximum = newNode;
         }
         return ++this.length;
     }
@@ -102,14 +107,22 @@ class Stack {
         }
         this.top = this.top.next;
         this.length--;
-        return temp.value;
+        return temp;
     }
 
     size() {
         return this.length;
     }
+
+    min() {
+        return this.minimum;
+    }
+
+    max() {
+        return this.maximum;
+    }
 }
 
 // Forgetting something down here? 
 exports.Node = Node;
-exports.Stack = Stack;
+exports.MinMaxStack = Stack;
