@@ -86,9 +86,13 @@ class StackQueue {
     enqueue(val){
         const newNode = new Node(val);
         if(this.size() === 0){
+            this.front = newNode;
+            this.back = newNode;
+        } else {
+            const temp = this.back;
+            this.back.next = newNode;
             this.back = newNode;
         }
-        this.front = newNode;
         this.inStack.push(newNode);
         return this.size();
     }
