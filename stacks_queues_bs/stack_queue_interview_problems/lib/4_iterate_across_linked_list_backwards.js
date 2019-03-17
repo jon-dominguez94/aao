@@ -26,9 +26,57 @@
 // Let's code!
 // -----------
 
+class Stack {
+    constructor(){
+        this.top = null;
+        this.bottom = null;
+        this.length = 0;
+    }
+
+    push(node) {
+        if (!this.top) {
+            this.top = node;
+            this.bottom = node;
+        } else {
+            const temp = this.top;
+            this.top = node;
+            this.top.next = temp;
+        }
+        return ++this.length;
+    }
+
+    pop() {
+        if (!this.top) {
+            return null;
+        } else {
+            const temp = this.top;
+            if (this.top === this.bottom) {
+                this.top = null;
+                this.bottom = null;
+            } else {
+                this.top = this.top.next;
+            }
+            this.length--;
+            return temp;
+        }
+    }
+
+    size(){
+        return this.length;
+    }
+}
+
 function iterateAcrossLinkedListBackwards(linkedList) {
     // TODO: Implement the iterateAcrossLinkedListBackwards function here
+    let nodes = [];
+    let head = linkedList.head;
+    while(head){
+        nodes.push(head);
+        head = head.next;
+    }
 
+    nodes = nodes.map(node => node.value);
+    return nodes.reverse().join(' -> ');
 }
 
 exports.iterateAcrossLinkedListBackwards = iterateAcrossLinkedListBackwards;
