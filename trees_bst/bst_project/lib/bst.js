@@ -24,6 +24,12 @@ class BST {
          } else {
              this.insert(val, root.left);
          }
+     } else {
+         if(!root.right){
+             root.right = new TreeNode(val);
+         } else {
+             this.insert(val, root.right);
+         }
      }
    }
 
