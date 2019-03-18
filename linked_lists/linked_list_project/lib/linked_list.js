@@ -102,32 +102,65 @@ class LinkedList {
 
     // TODO: Implement the contains method here
     contains(target) {
-
+        let curr = this.head;
+        while(curr){
+            if(curr.value === target) return true;
+            curr = curr.next;
+        }
+        return false;
     }
 
     // TODO: Implement the get method here
     get(index) {
-
+        if(index >= this.length || index < 0) return null;
+        let curr = this.head;
+        for(let i = 0; i < index; i++){
+            curr = curr.next;
+        }
+        return curr;
     }
 
     // TODO: Implement the set method here
     set(index, val) {
-
+        if (index >= this.length || index < 0) return false;
+        let curr = this.head;
+        for (let i = 0; i < index; i++) {
+            curr = curr.next;
+        }
+        curr.value = val;
+        return true;
     }
 
     // TODO: Implement the insert method here
     insert(index, val) {
-
+        if (index >= this.length || index < 0) return false;
+        let curr = this.head;
+        for (let i = 1; i < index; i++) {
+          curr = curr.next;
+        }
+        const newNode = new Node(val);
+        newNode.next = curr.next;
+        curr.next = newNode;
+        this.length++;
+        return true;
     }
 
     // TODO: Implement the remove method here
     remove(index) {
-
+        if (index >= this.length || index < 0) return undefined;
+        let curr = this.head;
+        for (let i = 1; i < index; i++) {
+            curr = curr.next;
+        }
+        const remove = curr.next;
+        curr.next = remove.next;
+        this.length--;
+        return remove;
     }
 
     // TODO: Implement the size method here
     size() {
-
+        return this.length;
     }
 }
 
