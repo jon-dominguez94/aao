@@ -16,7 +16,13 @@ class MaxHeap {
     }
 
     siftUp(idx){
+        if(idx === 1) return;
 
+        const pIdx = this.getParent(idx);
+        if(this.array[pIdx] < this.array[idx]){
+            [this.array[pIdx], this.array[idx]] = [this.array[idx], this.array[pIdx]];
+            this.siftUp(pIdx); 
+        }
     }
 
     insert(val){
