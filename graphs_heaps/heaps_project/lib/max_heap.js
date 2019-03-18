@@ -48,6 +48,13 @@ class MaxHeap {
 
     deleteMax(){
 
+        if(this.array.length === 2) return this.array.pop();
+        if(this.array.length === 1) return null;
+        
+        const max = this.array[1];
+        this.array[1] = this.array.pop();
+        this.siftDown(1);
+        return max;
     }
 
 }
