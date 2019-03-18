@@ -8,7 +8,7 @@ class MaxHeap {
     }
 
     getLeftChild(idx){
-
+        return 2 * idx;
     }
 
     getRightChild(idx){
