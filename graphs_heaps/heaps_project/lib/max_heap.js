@@ -31,6 +31,18 @@ class MaxHeap {
     }
 
     siftDown(idx){
+        const arr = this.array;
+        const val = arr[idx];
+        const lChild = this.getLeftChild(idx);
+        const lVal = arr[lChild] || -Infinity;
+        const rChild = this.getRightChild(idx) ;
+        const rVal = arr[rChild] || -Infinity;
+
+        if(val >= lVal && val >= rVal) return;
+
+        const swapIdx = lVal > rVal ? lChild : rChild;
+        [this.array[swapIdx], this.array[idx]] = [this.array[idx], this.array[swapIdx]];
+        this.siftDown(swapIdx);
 
     }
 
