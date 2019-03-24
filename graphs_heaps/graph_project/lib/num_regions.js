@@ -2,18 +2,18 @@ function numRegions(graph) {
     let visited = new Set();
     let count = 0;
 
-    Object.keys(graph).forEach(node => {
+    // Object.keys(graph).forEach(node => {
+    for(let node in graph){
         if(!visited.has(node)){
             count++;
-            const newVisited = explore(graph, node);
-            visited = new Set([...visited, ...newVisited]);
+            explore(graph, node, visited);
         }
-    });
+    }
 
     return count;
 }
 
-function explore(graph, node, visited=new Set()){
+function explore(graph, node, visited){
     if(!visited.has(node)){
         visited.add(node);
         graph[node].forEach(neighbor => {
