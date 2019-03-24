@@ -28,6 +28,14 @@
 
 function iterateAcrossLinkedListBackwards(linkedList) {
     // TODO: Implement the iterateAcrossLinkedListBackwards function here
+    if(!linkedList) return null;
+    const result = [];
+    let curr = linkedList.head;
+    while(curr){
+        result.unshift(String(curr.value));
+        curr = curr.next;
+    }
+    return result.join(' -> ');
 
 }
 
