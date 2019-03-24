@@ -33,6 +33,18 @@ class Queue {
     this.back = null;
     this.length = 0;
   }
+
+  enqueue(val){
+
+  }
+
+  dequeue(){
+
+  }
+
+  size(){
+    return this.length;
+  }
 }
 
 exports.Node = Node;
