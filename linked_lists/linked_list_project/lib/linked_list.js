@@ -98,7 +98,12 @@ class LinkedList {
 
     // TODO: Implement the contains method here
     contains(target) {
-
+        let temp = this.head;
+        while(temp){
+            if(temp.value === target) return true;
+            temp = temp.next;
+        }
+        return false;
     }
 
     // TODO: Implement the get method here
