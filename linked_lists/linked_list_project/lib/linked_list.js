@@ -129,12 +129,40 @@ class LinkedList {
 
     // TODO: Implement the insert method here
     insert(index, val) {
+        if (index < 0 || index >= this.length) return false;
 
+        if(index === 0){
+            this.addToHead(val);
+        } else {
+            let temp = this.head;
+            for (let i = 0; i < index - 1; i++) {
+                temp = temp.next;
+            }
+            const newNode = new Node(val);
+            newNode.next = temp.next;
+            temp.text = newNode;
+            this.length++;
+        }
+        return true;
     }
 
     // TODO: Implement the remove method here
     remove(index) {
+        if (index < 0 || index >= this.length) return undefined;
+        let removed;
 
+        if(index === 0){
+            this.removeHead();
+        } else {
+            let temp = this.head;
+            for (let i = 0; i < index - 1; i++) {
+              temp = temp.next;
+            }
+            removed = temp.next;
+            temp.next = removed.next;
+        }
+        this.length--;
+        return removed;
     }
 
     // TODO: Implement the size method here
