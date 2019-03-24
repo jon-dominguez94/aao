@@ -126,7 +126,7 @@ class Stack {
             min = node.value < min.value ? node : min;
             node = node.next;
         }
-        return node;
+        return min;
     }
 
     findMax(node){
@@ -135,7 +135,7 @@ class Stack {
             max = node.value > max.value ? node : max;
             node = node.next;
         }
-        return node;
+        return max;
     }
 
     size() {
