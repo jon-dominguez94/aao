@@ -76,6 +76,8 @@ class Stack {
     constructor() {
         this.top = null;
         this.bottom = null;
+        this.max = null;
+        this.min = null;
         this.length = 0;
     }
 
@@ -112,4 +114,4 @@ class Stack {
 
 // Forgetting something down here? 
 exports.Node = Node;
-exports.Stack = Stack;
+exports.MinMaxStack = Stack;
