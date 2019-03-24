@@ -43,6 +43,14 @@ class MaxHeap {
         [this.array[idx], this.array[swapIdx]] = [this.array[swapIdx], this.array[idx]];
         this.siftDown(swapIdx);
     }
+
+    deleteMax(){
+        if(this.array.length <= 1) return null;
+        [this.array[1], this.array[this.array.length - 1]] = [this.array[this.array.length - 1], this.array[1]];
+        const max = this.array.pop();
+        this.siftDown(1);
+        return max;
+    }
 }
 
 module.exports = {
