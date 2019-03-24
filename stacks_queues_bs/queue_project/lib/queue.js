@@ -33,36 +33,6 @@ class Queue {
     this.back = null;
     this.length = 0;
   }
-
-  enqueue(val){
-    const newNode = new Node(val);
-    if(!this.front){
-      this.front = newNode;
-      this.back = newNode;
-    } else {
-      this.back.next = newNode;
-      this.back = newNode;
-    }
-    return ++this.length;
-  }
-
-  dequeue(){
-    if(!this.front){
-      return null;
-    } else {
-      const front = this.front;
-      if(!this.front.next){
-        this.back = null;
-      }
-      this.front = this.front.next;
-      this.length--;
-      return front.value;
-    }
-  }
-
-  size(){
-    return this.length;
-  }
 }
 
 exports.Node = Node;
