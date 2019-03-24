@@ -8,7 +8,12 @@ function inOrderArray(root) {
 }
 
 function postOrderArray(root) {
-
+    let result = [];
+    if (!root) return result;
+    result = result.concat(postOrderArray(root.left));
+    result = result.concat(postOrderArray(root.right));
+    result.push((root.val));
+    return result;
 }
 
 
