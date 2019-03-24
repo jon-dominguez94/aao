@@ -28,6 +28,21 @@ class MaxHeap {
         this.array.push(val);
         this.siftUp(this.array.length - 1);
     }
+
+    siftDown(idx){
+        if(idx >= this.array.length) return;
+
+        const lChild = this.getLeftChild(idx);
+        const rChild = this.getRightChild(idx);
+        const lVal = this.array[lChild] || -Infinity;
+        const rVal = this.array[rChild] || -Infinity;
+
+        if(this.array[idx] >= lVal && this.array[idx] >= rVal) return;
+
+        const swapIdx = lVal > rVal ? lChild : rChild;
+        [this.array[idx], this.array[swapIdx]] = [this.array[swapIdx], this.array[idx]];
+        this.siftDown(swapIdx);
+    }
 }
 
 module.exports = {
