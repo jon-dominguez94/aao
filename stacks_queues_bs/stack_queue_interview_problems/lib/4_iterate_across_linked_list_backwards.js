@@ -28,15 +28,38 @@
 
 function iterateAcrossLinkedListBackwards(linkedList) {
     // TODO: Implement the iterateAcrossLinkedListBackwards function here
+    // if(!linkedList) return null;
+    // const result = [];
+    // let curr = linkedList.head;
+    // while(curr){
+        //     result.unshift(String(curr.value));
+        //     curr = curr.next;
+        // }
+        // return result.join(' -> ');
+        
     if(!linkedList) return null;
-    const result = [];
+
+    const stack = buildStack(linkedList);
+    const ordered = clearStack(stack);
+    return ordered.join(' -> ');
+}
+
+function buildStack(linkedList){
+    const stack = [];
     let curr = linkedList.head;
-    while(curr){
-        result.unshift(String(curr.value));
+    while (curr) {
+        stack.push(String(curr.value));
         curr = curr.next;
     }
-    return result.join(' -> ');
+    return stack;
+}
 
+function clearStack(stack){
+    const result = [];
+    while(stack.length){
+        result.push(stack.pop());
+    }
+    return result;
 }
 
 exports.iterateAcrossLinkedListBackwards = iterateAcrossLinkedListBackwards;
