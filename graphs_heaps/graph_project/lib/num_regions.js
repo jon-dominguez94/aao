@@ -2,7 +2,6 @@ function numRegions(graph) {
     let visited = new Set();
     let count = 0;
 
-    // Object.keys(graph).forEach(node => {
     for(let node in graph){
         if(!visited.has(node)){
             count++;
@@ -20,7 +19,6 @@ function explore(graph, node, visited){
             explore(graph, neighbor, visited);
         });
     }
-    return visited;
 }
 
 
