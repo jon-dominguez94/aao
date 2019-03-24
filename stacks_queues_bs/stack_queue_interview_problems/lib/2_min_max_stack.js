@@ -107,11 +107,35 @@ class Stack {
         }
         const temp = this.top;
         if (this.top === this.bottom) {
+            this.top = null;
             this.bottom = null;
+            this.maximum = null;
+            this.minimum = null;
+        } else {
+            this.minimum = temp === this.minimum ? this.findMin(this.top.next) : this.minimum;
+            this.maximum = temp === this.maximum ? this.findMax(this.top.next) : this.maximum;
+            this.top = this.top.next;
         }
-        this.top = this.top.next;
         this.length--;
-        return temp.value;
+        return temp;
+    }
+
+    findMin(node){
+        let min = new Node(Infinity);
+        while(node){
+            min = node.value < min.value ? node : min;
+            node = node.next;
+        }
+        return node;
+    }
+
+    findMax(node){
+        let max = new Node(-Infinity);
+        while (node) {
+            max = node.value > max.value ? node : max;
+            node = node.next;
+        }
+        return node;
     }
 
     size() {
