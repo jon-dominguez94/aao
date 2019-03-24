@@ -76,8 +76,8 @@ class Stack {
     constructor() {
         this.top = null;
         this.bottom = null;
-        this.max = null;
-        this.min = null;
+        this.maximum = null;
+        this.minimum = null;
         this.length = 0;
     }
 
@@ -86,10 +86,17 @@ class Stack {
         if (!this.top) {
             this.top = newNode;
             this.bottom = newNode;
+            this.maximum = newNode;
+            this.minimum = newNode;
         } else {
             const temp = this.top;
             this.top = newNode;
             this.top.next = temp;
+            if(newNode.value > this.maximum.value){
+                this.maximum = newNode;
+            } else if (newNode.value < this.minimum.value){
+                this.minimum = newNode;
+            }
         }
         return ++this.length;
     }
@@ -109,6 +116,14 @@ class Stack {
 
     size() {
         return this.length;
+    }
+
+    max() {
+        return this.maximum;
+    }
+
+    min() {
+        return this.minimum;
     }
 }
 
