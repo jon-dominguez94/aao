@@ -15,7 +15,14 @@ class MaxHeap {
         return idx * 2 + 1;
     }
 
-    
+    siftUp(idx){
+        if(idx <= 1) return;
+        const pIdx = this.getParent(idx);
+        if(this.array[idx] > this.array[pIdx]){
+            [this.array[idx], this.array[pIdx]] = [this.array[pIdx], this.array[idx]];
+            this.siftUp(pIdx);
+        }
+    }
 }
 
 module.exports = {
