@@ -53,7 +53,19 @@ class LinkedList {
 
     // TODO: Implement the removeTail method here
     removeTail() {
-
+        if(!this.tail) return undefined;
+        const temp = this.tail;
+        if(this.head === this.tail){
+            this.head = null;
+            this.tail = null;
+        } else {
+            let prev = this.head;
+            while(prev.next !== this.tail) prev = prev.next;
+            prev.next = null;
+            this.tail = prev;
+        }
+        this.length--;
+        return temp;
     }
 
     // TODO: Implement the addToHead method here
