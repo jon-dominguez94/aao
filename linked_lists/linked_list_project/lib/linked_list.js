@@ -133,6 +133,7 @@ class LinkedList {
 
         if(index === 0){
             this.addToHead(val);
+            return true;
         } else {
             let temp = this.head;
             for (let i = 0; i < index - 1; i++) {
@@ -142,8 +143,8 @@ class LinkedList {
             newNode.next = temp.next;
             temp.text = newNode;
             this.length++;
+            return true;
         }
-        return true;
     }
 
     // TODO: Implement the remove method here
@@ -160,8 +161,8 @@ class LinkedList {
             }
             removed = temp.next;
             temp.next = removed.next;
+            this.length--;
         }
-        this.length--;
         return removed;
     }
 
