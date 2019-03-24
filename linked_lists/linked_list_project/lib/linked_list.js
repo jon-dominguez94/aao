@@ -118,7 +118,13 @@ class LinkedList {
 
     // TODO: Implement the set method here
     set(index, val) {
-
+        if (index < 0 || index >= this.length) return false;
+        let temp = this.head;
+        for (let i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        temp.value = val;
+        return true;
     }
 
     // TODO: Implement the insert method here
